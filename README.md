@@ -1,48 +1,43 @@
-Boilerplate project
-===============
-This project is a ready-to use boilerplate for "It's not a bug, It's a feature" Java course.
+JDBC HW1
+========
 
-#### How-to use
+1 DB Installation
+-----------------
 
-1. `git clone https://github.com/ChangeRequest/boilerplate-project.git name_of_new_project`
-2. `git remote remove origin`
-3. `git remote add origin https://github.com/new_repo/name_of_new_project.git`
-4. Update project name in `settings.gradle`
-5. Update `README.MD` to match newly created repository.
-6. Update Author name in `LICENSE` (if needed)
-7. Continue working in your new ready-to-use repository.
+1. Download and install H2 database
+2. Create database `store`
+3. Create user `store_user` with any password
+4. Include gradle dependency for H2 JDBC driver
 
-####Already configured parts
+2 Store Schema
+--------------
 
-* Travis-CI configuration file
-* .gitignore file
-* build.gradle (already contains all needed imports)
-* License file with `Apache License Version 2.0`
-* empty package in src folder (`school.lemon.changerequest.java`)
+Design database model that represents store. 
+There should be following tables:
+1. **category**: id, title, description
+2. **property**: name, value. Please be sure that there is no way to create 2 properties with the same name and value.
+3. **item**: id, title, description, price
+4. **catalog**: id, name
+ 
+3 Store Relations 
+-----------------
 
-#### Travis-CI configuration
-* Oracle JDK 8
-* Install step: `gradlew clean assemble`
-* Check step: `gradlew check`
+Create relations between tables.
 
-#### .gitignore
-Already configured to ignore most of unwonted stuff:
-* eclipse ignores
-* IDEA ignores
-* Java and Groovy ignores
-* gradle and maven ignores
-* etc.
+1. One item should contain many properties. Many items may contain the same properties.
+2. One item should be related to many categories. Many items may be related to many categories.
+3. One item may be related to many catalogs. One catalog may contains many items.
 
-#### build.gradle
-* group is `school.lemon.changerequest.java`
-* applied module from [gradle_common project]:
-  * commonModule
-  * javaModule
-  * testModule
-  * idea
-  * eclipse
+4 Demo class 
+------------
 
+Create demo class, that creates:
 
-  
-[gradle_common project]: https://github.com/ChangeRequest/gradle_common
+1. Several items.
+2. Several categories.
+3. Several catalogs.
+4. Several properties.
+5. Link items to catalogs, categories, properties.
+6. Retrieve information about all catalogs, with all items in this catalog. Note that properties and categories of all items should be filled in.
 
+**NOTE**: All SQL statements for user, schema creation should be in the `resource` folder as SQL file. Also feel free to extend or modify models with any additional methods and fields if needed.
