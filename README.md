@@ -14,6 +14,7 @@ JDBC HW1
 
 Design database model that represents store. 
 There should be following tables:
+
 1. **category**: id, title, description
 2. **property**: name, value. Please be sure that there is no way to create 2 properties with the same name and value.
 3. **item**: id, title, description, price
