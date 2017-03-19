@@ -1,0 +1,27 @@
+INSERT INTO PROPERTY(name, value) VALUES ('IRON',100);
+INSERT INTO PROPERTY(name, value) VALUES ('COPPER', 400);
+INSERT INTO CATALOG (name) VALUES ('WAR');
+INSERT INTO CATALOG (name) VALUES ('CIVIL');
+INSERT INTO CATEGORY (title,description) VALUES ('Armored', 'Tank');
+INSERT INTO CATEGORY (title,description) VALUES ('Not Armored', 'Car');
+
+INSERT INTO ITEM (title, description,price,PROPERTY_ID, CATALOG_ID , CATEGORY_ID ) VALUES ('PANZER', 'tank',100,
+SELECT property.id FROM property WHERE name='IRON',
+SELECT catalog.id FROM catalog WHERE name='WAR',
+SELECT category.id FROM category WHERE title='Armored');
+
+INSERT INTO ITEM (title, description,price,PROPERTY_ID, CATALOG_ID , CATEGORY_ID ) VALUES ('THELASTRIDE', 'car',100,
+SELECT property.id FROM property WHERE name='IRON',
+SELECT catalog.id FROM catalog WHERE name='CIVIL',
+SELECT category.id FROM category WHERE title='Not Armored');
+
+INSERT INTO ITEM (title, description,price,PROPERTY_ID, CATALOG_ID , CATEGORY_ID ) VALUES ('TRAVELINSTYLE', 'car',100,
+SELECT property.id FROM property WHERE name='COPPER',
+SELECT catalog.id FROM catalog WHERE name='CIVIL',
+SELECT category.id FROM category WHERE title='Not Armored');
+
+INSERT INTO ITEM (title, description,price,PROPERTY_ID, CATALOG_ID , CATEGORY_ID ) VALUES ('ROCKANDROLLCAR', 'car',100,
+SELECT property.id FROM property WHERE name='IRON',
+SELECT catalog.id FROM catalog WHERE name='CIVIL',
+SELECT category.id FROM category WHERE title='Not Armored');
+SELECT CATALOG.NAME, ITEM.TITLE, PROPERTY.NAME, CATEGORY.TITLE FROM CATALOG, ITEM, PROPERTY, CATEGORY WHERE CATALOG_ID=CATALOG.ID AND PROPERTY_ID=PROPERTY.ID AND CATEGORY_ID=CATEGORY.ID;
